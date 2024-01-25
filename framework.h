@@ -25,6 +25,7 @@ typedef struct {
 float rand_float(void);
 
 Mat mat_alloc(size_t rows, size_t cols);
+void mat_fill(Mat dest, float val);
 void mat_dot(Mat dest, Mat a, Mat b);
 void mat_sum(Mat dest, Mat a);
 void mat_print(Mat m);
@@ -45,6 +46,11 @@ Mat mat_alloc(size_t rows, size_t cols){
     ret.es = FRAMEWORK_MALLOC(sizeof(*ret.es)*rows*cols);
     FRAMEWORK_ASSERT(ret.es != NULL);
     return ret;
+}
+
+void mat_fill(Mat dest,float val){
+    (void) dest;
+    (void) val;
 }
 
 void mat_dot(Mat dest, Mat a, Mat b){
