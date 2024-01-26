@@ -49,14 +49,25 @@ Mat mat_alloc(size_t rows, size_t cols){
 }
 
 void mat_fill(Mat dest,float val){
-    (void) dest;
-    (void) val;
+    for(size_t i=0;i<dest.rows; i++){
+        for(size_t j=0;j<dest.cols; j++){
+            MAT_AT(dest,i,j) = val;
+        }
+    }
 }
 
 void mat_dot(Mat dest, Mat a, Mat b){
-    (void) dest;
-    (void) a;
-    (void) b;
+    FRAMEWORK_ASSERT(a.cols == b.rows);
+    FRAMEWORK_ASSERT(dest.rows == a.rows);
+    FRAMEWORK_ASSERT(dest.cols == b.cols);
+    mat_fill(dest,0);
+    for(size_t i=0;i<a.rows;i++){
+        for(size_t k=0;k<a.cols;k++){
+            for(size_t j=0;j<b.cols;j++){
+                MAT_AT(dest,i,j) += MAT_AT(a,i,k) + MAT_AT(b,k,j);
+            }
+        }
+    }
 }
 
 void mat_sum(Mat dest, Mat a){
