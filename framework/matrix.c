@@ -40,6 +40,14 @@ mat matclone(mat m){
     return Matrix;
 }
 
+mat matrow(mat m, size_t at){
+    mat Matrix = matinit(1, m.cols);
+    for(size_t i=0;i<m.cols;i++){
+        Matrix.entries[0][i] = m.entries[at][i];
+    }
+    return Matrix;
+}
+
 void matfill(mat m, double val){
     for(size_t i = 0;i<m.rows;i++){
         for(size_t j = 0;j<m.cols;j++){

@@ -12,6 +12,7 @@ typedef struct{
 
 mat matinit(size_t row, size_t col);
 mat matclone(mat matrix);
+mat matrow(mat matrix, size_t rowth);
 void matfill(mat dest, double value);
 void matfree(mat dest);
 void matprintf(mat matrix, char* name);
