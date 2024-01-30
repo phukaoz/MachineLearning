@@ -48,6 +48,21 @@ mat matrow(mat m, size_t at){
     return Matrix;
 }
 
+int matcmp(mat m1, mat m2){
+    if(dimensions_match(m1,m2)){
+        for(size_t i=0;i<m1.rows;i++){
+            for(size_t j=0;j<m1.cols;j++){
+                if(m1.entries[i][j] != m2.entries[i][j]){
+                    return 0;
+                }
+            }
+        }
+    }else{
+        error("dimensions mismatch for matcmp().");
+    }
+    return 1;
+}
+
 void matfill(mat m, double val){
     for(size_t i = 0;i<m.rows;i++){
         for(size_t j = 0;j<m.cols;j++){
@@ -57,14 +72,14 @@ void matfill(mat m, double val){
 }
 
 void matprintf(mat m, char* s){
-    printf("Matrix: %s  Rows: %zu Columns: %zu\n",s,m.rows,m.cols);
+    printf("Rows: %zu Columns: %zu\n",m.rows,m.cols);
     for(size_t i = 0;i<m.rows;i++){
         for(size_t j = 0;j<m.cols;j++){
             printf("%.3f  ",m.entries[i][j]);
         }
         printf("\n");
     }
-    printf("\n");
+    printf("Label: %s\n\n", s);
 }
 
 void matfree(mat m){

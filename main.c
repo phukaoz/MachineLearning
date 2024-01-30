@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "frameworks/matrix.h"
+#include "frameworks/image.h"
+#include <stdlib.h>
 
 int main(void){
-    mat m1 = matinit(2, 4);
-    matfill(m1,0);
-    matprint(m1);
+    img *img = imgcsv("data/train.csv", 10);
+    imgprint(img[2]);
+
     return 0;
 }
